@@ -15,12 +15,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useEffect, useState } from "react";
 import ClientList from "./ClientsList";
-import {
-  AddClient,
-  getAllClient,
-  UpdateClient,
-  DeleteClient,
-} from "./clientCrudOperations";
+import {getAll,PostNew,UpdateNew,Deleterow} from '../Shared/ApiCrud'
 import { useForm } from "react-hook-form";
 import CircularProgress from "@mui/material/CircularProgress";
 import Swal from "sweetalert";
@@ -59,17 +54,19 @@ export const Clients = () => {
     isError,
   } = useQuery({
     queryKey: ["client"],
-    queryFn: async () => await getAllClient(),
+    queryFn: async (data) => await getAll('/client',data),
     onError: async () => {
       toast.error("Can not find client");
     },
   });
+
+  
 // Get all clients End
 
 
 // Add a client Start
 const {mutate,isLoading:mutateLoading} = useMutation({
-    mutationFn: async (data) => await AddClient(data),
+    mutationFn: async (data) => await PostNew('client',data),
     onSuccess: async ()=>{
         queryclient.invalidateQueries({queryKey:['client']})
         toast.success("Client added successfully")
@@ -105,7 +102,7 @@ const {mutate,isLoading:mutateLoading} = useMutation({
 //Update Client
 const {mutate:updateMutate,isLoading:updateLoading}=useMutation({
     mutationFn: async (data)=>{
-        return await UpdateClient(Edit, data)
+        return await UpdateNew(`/client/${Edit}`, data)
         
     },
     onSuccess:()=>{
@@ -128,11 +125,11 @@ const {mutate:updateMutate,isLoading:updateLoading}=useMutation({
   };
 
 const {mutate:delateMutate}=useMutation({
-    mutationFn:(id)=>DeleteClient(id),
+    mutationFn:(id)=>Deleterow(`/client/${id}`),
     onSuccess:()=>{
         toast.success('Client has been deleted')
         DeleteHook.Toggle()
-        queryclient.invalidateQueries({queryKey:['gallery']})
+        queryclient.invalidateQueries({queryKey:['client']})
     },
     onError:(err)=>{
         toast.error(err.message)
