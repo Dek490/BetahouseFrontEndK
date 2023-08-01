@@ -170,13 +170,22 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
 
           </ListItemButton>
       </Link>
-          <ListItemButton >
+      <Link to={'about'} style={{textDecoration:"none"}}>
+          <ListItemButton  sx={[selectedMenu ==='About' && {bgcolor:"primary.main",color:"white",":hover":{
+            bgcolor:"primary.dark"
+             }}]}
+            onClick={()=>{
+            setMenu('About')
+            DrawerClose()
+         
+         }}>
             <ListItemIcon>
               <InfoIcon sx={{ color: "primary.dark"}}/>
             </ListItemIcon>
             <ListItemText primary="About" />
 
           </ListItemButton>
+          </Link>
 
           <ListItemButton >
             <ListItemIcon>
@@ -342,13 +351,23 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
           </ListItemButton>
       </Link>
 
-          <ListItemButton >
+      <Link to={'about'} style={{textDecoration:"none"}}>
+          <ListItemButton  sx={[selectedMenu ==='About' && {bgcolor:"primary.main",color:"white",":hover":{
+            bgcolor:"primary.dark"
+             }}]}
+            onClick={()=>{
+            setMenu('About')
+         
+         
+         }}>
             <ListItemIcon>
               <InfoIcon sx={{ color: "primary.dark"}}/>
             </ListItemIcon>
             <ListItemText primary="About" />
 
           </ListItemButton>
+          </Link>
+
 
           <ListItemButton >
             <ListItemIcon>

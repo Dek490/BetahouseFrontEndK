@@ -3,8 +3,6 @@ import Sidebar from "./SideBar"
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from "react";
-import Clients from "../components/Clients/Clients";
-import Images from "../components/Images/Images"
 import { Outlet } from "react-router-dom";
 export default function Dashboard(){
 const [draweOpen,setDrawer]=useState(false)

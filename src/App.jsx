@@ -6,6 +6,7 @@ import Images from './components/Images/Images'
 import Gallery from './components/Gallery/Gallery'
 import Service from './components/Services/Service'
 import Home from './components/Home/Home'
+import About from './components/About/About'
 import { Route, Routes } from 'react-router-dom'
 function app() {
   return ( 
@@ -21,6 +22,7 @@ function app() {
 <Route path='images' element={<Images/>}/>
 <Route path='gallery' element={<Gallery/>}/>
 <Route path='services' element={<Service/>}/>
+<Route path='about' element={<About/>}/>
 <Route path='owner' element={<h1>Owner Feels Okey</h1>}/>
 
 </Route>
