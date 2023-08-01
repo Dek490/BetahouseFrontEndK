@@ -6,9 +6,9 @@ import {
   Alert,
   TextField,
   Button,
-  Divider,
-  ErrorOutlineOutlined
+  Divider
 } from "@mui/material";
+import { ErrorOutlineOutlined } from "@mui/icons-material";
 import AddHomeWorkIcon from "@mui/icons-material/AddHomeWork";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
