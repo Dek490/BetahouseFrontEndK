@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
 import {useQuery, useQueryClient ,useMutation} from "@tanstack/react-query";
+import {GetData,AddData,UpdateData,DeleteData} from '../Shared/ReacQuery'
 import ConfirmDelete from '../Delete/ConfirmDelete'
 import {useDeleteHook} from '../Delete/DeleteHooks'
 export const Gallery = ()=>{
@@ -24,54 +25,18 @@ export const Gallery = ()=>{
         setDailog(!dailogOpen)
     }
 //Get All Gallery List
-    const {
-        data: gallery,
-        isLoading,
-        isError,
-      } = useQuery({
-        queryKey: ["gallery"],
-        queryFn: async () => await getAllGallery(),
-        onError: async () => {
-          toast.error("Can not find gallery");
-        },
-      });
+    const {data: gallery,isLoading,isError} = GetData('gallery','gallery');
 //Get all gallery End
-const {mutate,isLoading:mutateLoading} = useMutation({
-    mutationFn: async (data) => await AddGallery(data),
-    onSuccess: async ()=>{
-        queryclient.invalidateQueries({queryKey:['gallery']})
-        toast.success("Gallery added successfully")
-    },
-    onError: async ()=>{
-        toast.error("Adding New Gallery Failed")
-    },
-})
 
-const {mutate:updateMutate,isLoading:updateLoading}=useMutation({
-    mutationFn: async (data)=>{
-        return await UpdateGallery(EditId, data)
-        
-    },
-    onSuccess:()=>{
-        queryclient.invalidateQueries({queryKey:['gallery']})
-        toast.success('Data has been Updated')
-        ToggleDailog()
-        setEditId('')
-       
-    },
-    onError:(err)=>{
-        toast.error('Error Occured')
+const {mutate,isLoading:mutateLoading} = AddData('gallery','gallery');
 
-    }
-    
-})
+const {mutate:updateMutate,isLoading:updateLoading}=UpdateData(`/gallery/${EditId}`,'gallery');
 
 
 const AddNewGallery = async (data)=>{
     if(EditId ==''){
              try{
                 mutate(data)
-                
                 ToggleDailog()
                 } catch( err){
                     console.log("Error Ocured ",err)

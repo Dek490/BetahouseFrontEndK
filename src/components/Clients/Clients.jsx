@@ -14,18 +14,14 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import ClientList from "./ClientsList";
-import {getAll,PostNew,UpdateNew,Deleterow} from '../Shared/ApiCrud'
 import { useForm } from "react-hook-form";
 import CircularProgress from "@mui/material/CircularProgress";
-import Swal from "sweetalert";
-import { toast } from "react-toastify";
-import {useQuery, useQueryClient ,useMutation} from "@tanstack/react-query";
 import ConfirmDelete from '../Delete/ConfirmDelete'
 import {useDeleteHook} from '../Delete/DeleteHooks'
+import {GetData,AddData,UpdateData,DeleteData} from '../Shared/ReacQuery'
 export const Clients = () => {
-  const queryclient = useQueryClient();
   const [CliDelId,setCliDelId]=useState("")
   const {
     register,
@@ -38,11 +34,6 @@ export const Clients = () => {
 
   
   const [dailogOpen, setDailog] = useState(false);
-  const ToggleClean =()=>{
-    reset();
-    ToggleDailog();
-
-  };
   const ToggleDailog = () => {
     setDailog(!dailogOpen);
   };
@@ -51,33 +42,14 @@ export const Clients = () => {
   const [Edit, setEdit] = useState("");
 
 // Get All Client
-  const {
-    data: client,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["client"],
-    queryFn: async (data) => await getAll('/client',data),
-    onError: async () => {
-      toast.error("Can not find client");
-    },
-  });
-
-  
+  const {data: client,isLoading,isError} = GetData('/client','client');
 // Get all clients End
 
 
 // Add a client Start
-const {mutate,isLoading:mutateLoading} = useMutation({
-    mutationFn: async (data) => await PostNew('client',data),
-    onSuccess: async ()=>{
-        queryclient.invalidateQueries({queryKey:['client']})
-        toast.success("Client added successfully")
-    },
-    onError: async ()=>{
-        toast.error("Adding New Client Failed")
-    },
-})
+const {mutate,isLoading:mutateLoading} = AddData('client','client')
+
+
   const AddNewClient = async (data) => {
     if (Edit == "") {
       try {
@@ -93,6 +65,8 @@ const {mutate,isLoading:mutateLoading} = useMutation({
     //   await UpdateClient(Edit, data);
     updateMutate(data)
       console.log("wala update garereyy datadaan !!");
+      ToggleDailog()
+      // setEdit('')
       reset();
     } catch (error) {
       console.log("erro !", error);
@@ -103,48 +77,22 @@ const {mutate,isLoading:mutateLoading} = useMutation({
 
 
 //Update Client
-const {mutate:updateMutate,isLoading:updateLoading}=useMutation({
-    mutationFn: async (data)=>{
-        return await UpdateNew(`/client/${Edit}`, data)
-        
-    },
-    onSuccess:()=>{
-        queryclient.invalidateQueries({queryKey:['client']})
-        toast.success('Data has been Updated')
-        ToggleDailog()
-        setEdit('')
-    },
-    onError:(err)=>{
-        toast.error('Error Occured')
-
-    }
-    
-})
+const {mutate:updateMutate,isLoading:updateLoading}=UpdateData(`/client/${Edit}`,'client')
   const UpdateClientInfo = async (data) => {
     setValue("ClientName", data.ClientName);
     setValue("Logo", data.Logo);
     setEdit(data._id);
     ToggleDailog();
   };
+//Update client End
 
-const {mutate:delateMutate}=useMutation({
-    mutationFn:(id)=>Deleterow(`/client/${id}`),
-    onSuccess:()=>{
-        toast.success('Client has been deleted')
-        DeleteHook.Toggle()
-        queryclient.invalidateQueries({queryKey:['client']})
-    },
-    onError:(err)=>{
-        toast.error(err.message)
-    }
-
-
-})
+// delete client
+const {mutate:delateMutate}=DeleteData(`/client/${CliDelId}`)
 const DeleteHook=useDeleteHook()
 
 const DeleteCheck=()=>{
     delateMutate(CliDelId)
-
+DeleteHook.Toggle()
 }
 
 const DeleteClientInfo= async(data)=>{

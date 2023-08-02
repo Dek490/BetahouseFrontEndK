@@ -346,7 +346,7 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
             <ListItemIcon>
             <MiscellaneousServicesIcon sx={{ color: "primary.dark"}}/>
             </ListItemIcon>
-            <ListItemText primary="Services" />
+            <ListItemText primary="Services"sx={[selectedMenu!='Services' && {color:'primary.dark'}]}/>
 
           </ListItemButton>
       </Link>
@@ -363,7 +363,7 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
             <ListItemIcon>
               <InfoIcon sx={{ color: "primary.dark"}}/>
             </ListItemIcon>
-            <ListItemText primary="About" />
+            <ListItemText primary="About" sx={[selectedMenu!='About' && {color:'primary.dark'}]}/>
 
           </ListItemButton>
           </Link>
