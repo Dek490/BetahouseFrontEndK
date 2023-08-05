@@ -1,5 +1,6 @@
 import { Alert, Box, Breadcrumbs, Button, Grid, Stack, TextField,Link ,Typography  } from '@mui/material';
 import React, { useState } from 'react';
+import List from '@mui/material/List';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -58,6 +59,7 @@ console.log(data)
     try {
       await PostNew('/info',data).then(() => {
         toast.success('Updated successfully');
+        ToggleDailog();
       });
     } catch (error) {
       toast.error(error.message);
@@ -78,6 +80,7 @@ console.log(data)
 
 
       {/* end */}
+
 <Stack direction={'row'}>
       <Card sx={{ width:400,bgcolor:'primary.dark', marginTop:5,marginLeft:15 }} >
       <CardContent>
