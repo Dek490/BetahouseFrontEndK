@@ -37,6 +37,10 @@ export const Clients = () => {
   const ToggleDailog = () => {
     setDailog(!dailogOpen);
   };
+  const ToggleClean = () => {
+    reset();
+    setEdit("")
+  };
 //Dailog and ToggleDailog End
 
   const [Edit, setEdit] = useState("");
@@ -141,7 +145,10 @@ const DeleteClientInfo= async(data)=>{
               </Box>
             </DialogContent>
             <DialogActions>
-              <Button onClick={ToggleDailog}>Cancel</Button>
+              <Button onClick={()=>{
+                ToggleDailog()
+                ToggleClean()
+              }}>Cancel</Button>
               <Button variant="contained" disabled={mutateLoading} type="submit" size="small">
                 Submit
               </Button>

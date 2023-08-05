@@ -27,6 +27,10 @@ const {register,handleSubmit,setValue,reset,formState:{errors}} = useForm()
     const ToggleDailog = ()=>{
         setDailog(!dailogOpen)
     }   
+    const ToggleClean = () => {
+      reset();
+      setEdit("")
+    };
 
     //Get all Houses
     const {
@@ -197,7 +201,10 @@ const DeleteHouseInfo= async(data)=>{
     </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={ToggleDailog}>Cancel</Button>
+          <Button onClick={()=>{
+                ToggleDailog()
+                ToggleClean()
+              }}>Cancel</Button>
           <Button variant="contained" type="submit"  size="small">Submit</Button>
  
         </DialogActions>
