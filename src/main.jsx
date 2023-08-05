@@ -20,7 +20,7 @@ const theme = createTheme({
     },
 
     error:{
-      main:"#E50F0C",
+      main:"#FA3F08",
       warning:"#E75E06",
       dark:'#145A32',
     }

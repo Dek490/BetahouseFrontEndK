@@ -1,4 +1,8 @@
 import { Box,Stack,IconButton,Typography,Alert,TextField,Button, Divider} from "@mui/material"
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
+import { ErrorOutlineOutlined } from "@mui/icons-material";
 import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -158,6 +162,21 @@ const DeleteHouseInfo= async(data)=>{
 
 
 <TextField label="House Type" {...register("type")} variant="outlined" size="small" fullWidth/>
+{/* <FormControl fullWidth {...register("type")}>
+  <InputLabel variant="standard" htmlFor="uncontrolled-native">
+        House Type
+        </InputLabel>
+        <NativeSelect
+          inputProps={{
+            name: 'type',
+            id: 'uncontrolled-native',
+          }}
+        >
+          <option value="Villo">Villa</option>
+          <option value="Apartment">Apartment</option>
+          <option value="Bacwayne">Bacwayne</option>
+        </NativeSelect>
+      </FormControl> */}
 <TextField label="Address" variant="outlined" {...register("Address")} size="small" fullWidth/>
 <TextField label="Home Age" variant="outlined" {...register("Age")} size="small" fullWidth/>
 <TextField label="Rent" variant="outlined" {...register("Rent")} size="small" fullWidth/>

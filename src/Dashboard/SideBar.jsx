@@ -56,13 +56,12 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
 
         >
           <ListItemButton>
-            <ListItemIcon>
+            <ListItemIcon sx={{ color: "primary.dark"}}>
               <DashboardIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            </ListItemIcon >
+            <ListItemText primary="Dashboard" sx={{ color: "primary.dark"}}/>
           </ListItemButton>
-
-  <Link to={'home'} style={{textDecoration:"none"}}>
+   <Link to={'home'} style={{textDecoration:"none"}}>
 
 <ListItemButton
       sx={[selectedMenu ==='Home' && {bgcolor:"primary.dark",color:"white",":hover":{
@@ -70,137 +69,103 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
       }}]}
       onClick={()=>{
         setMenu('Home')
-        DrawerClose()
         console.log('Home clicked')
       }}>
   <ListItemIcon sx={{ color: "primary.dark"}}>
-    <AssignmentIcon sx={[selectedMenu==='Home' && {color:"white"}]}/>
+    <AssignmentIcon sx={[selectedMenu!='Home' && {color:'primary.dark'},selectedMenu==='Home'&& {color:'white'}]}/>
   </ListItemIcon>
-  <ListItemText primary="Home" />
+  <ListItemText primary="Home"sx={[selectedMenu!='Home' && {color:'primary.dark'}]}/>
 </ListItemButton>
 </Link>
 
-          <Link to={'client'} style={{textDecoration:"none"}}>
+<Link to={'client'} style={{textDecoration:"none"}}>
 
-          <ListItemButton
-                sx={[selectedMenu ==='Client' && {bgcolor:"primary.main",color:"white",":hover":{
-                  bgcolor:"primary.dark"
-                }}]}
-                onClick={()=>{
-                  setMenu('Client')
-                  DrawerClose()
-                  console.log('Client clicked')
-                }}>
-            <ListItemIcon>
-              <AssignmentIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Client" />
-          </ListItemButton>
-          </Link>
-          
-          <Link to={'houses'} style={{textDecoration:"none"}}>
+<ListItemButton
+      sx={[selectedMenu ==='Client' && {bgcolor:"primary.dark",color:"white",":hover":{
+        bgcolor:"primary.dark"
+      }}]}
+      onClick={()=>{
+        setMenu('Client')
+        // DrawerClose()
+        console.log('Client clicked')
+      }}>
+  <ListItemIcon sx={{ color: "primary.dark"}}>
+    <AssignmentIcon sx={[selectedMenu!='Client' && {color:'primary.dark'},selectedMenu==='Client'&& {color:'white'}]}/>
+  </ListItemIcon >
+  <ListItemText primary="Client" sx={[selectedMenu!='Client' && {color:'primary.dark'}]}/>
+</ListItemButton>
+</Link>
 
-          <ListItemButton  sx={[selectedMenu ==='Houses' && {bgcolor:"primary.main",color:"white",":hover":{
-                  bgcolor:"primary.dark"
-                }}]}
-                onClick={()=>{
-                  setMenu('Houses')
-                  DrawerClose()
-                  console.log('Houses clicked')
-                }}>
-            <ListItemIcon>
-              <InboxIcon sx={{ color: "primary.dark"}} />
-            </ListItemIcon>
-            <ListItemText primary="Houses" />
+<Link to={'houses'} style={{textDecoration:"none"}}>
 
-          </ListItemButton>
-          </Link>
+<ListItemButton  sx={[selectedMenu ==='Houses' && {bgcolor:"primary.dark",color:"white",":hover":{
+        bgcolor:"primary.dark"
+      }}]}
+      onClick={()=>{
+        setMenu('Houses')
+        // DrawerClose()
+        console.log('Houses clicked')
+      }}>
+  <ListItemIcon >
+    <InboxIcon sx={[selectedMenu!='Houses' && {color:'primary.dark'},selectedMenu==='Houses'&& {color:'white'}]}/>
+  </ListItemIcon>
+  <ListItemText primary="Houses" sx={[selectedMenu!='Houses' && {color:'primary.dark'}]}/>
+
+</ListItemButton>
+</Link>
+<Link to={'services'} style={{textDecoration:"none"}}>
+  <ListItemButton 
+ sx={[selectedMenu ==='Services' && {bgcolor:"primary.main",color:"white",":hover":{
+  bgcolor:"primary.dark"
+   }}]}
+  onClick={()=>{
+  setMenu('Services')
 
 
-          <Link to={'images'} style={{textDecoration:"none"}}>
-          <ListItemButton 
-          sx={[selectedMenu ==='Images' && {bgcolor:"primary.main",color:"white",":hover":{
-            bgcolor:"primary.dark"
-          }}]}
-          onClick={()=>{
-            setMenu('Images')
-            DrawerClose()
-            console.log('Images clicked')
-          }}>
-            <ListItemIcon>
-              <InboxIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Images" />
+}}>
+  <ListItemIcon>
+  <MiscellaneousServicesIcon sx={[selectedMenu!='Services' && {color:'primary.dark'},selectedMenu==='Services'&& {color:'white'}]}/>
+  </ListItemIcon>
+  <ListItemText primary="Services"sx={[selectedMenu!='Services' && {color:'primary.dark'}]}/>
 
-          </ListItemButton>
+</ListItemButton>
+</Link>
 
-          </Link>
-          <Link to={'gallery'} style={{textDecoration:"none"}}>
-          <ListItemButton 
-                    sx={[selectedMenu ==='Gallery' && {bgcolor:"primary.main",color:"white",":hover":{
-                      bgcolor:"primary.dark"
-                    }}]}
-                    onClick={()=>{
-                      setMenu('Gallery')
-                      DrawerClose()
-                      console.log('Gallery clicked')
-                    }}>
-            <ListItemIcon>
-              <InboxIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Gallery" />
+<Link to={'about'} style={{textDecoration:"none"}}>
+<ListItemButton  sx={[selectedMenu ==='About' && {bgcolor:"primary.main",color:"white",":hover":{
+  bgcolor:"primary.dark"
+   }}]}
+  onClick={()=>{
+  setMenu('About')
 
-          </ListItemButton>
 
-          </Link>
-          <Link to={'services'} style={{textDecoration:"none"}}>
-            <ListItemButton 
-           sx={[selectedMenu ==='Service' && {bgcolor:"primary.main",color:"white",":hover":{
-            bgcolor:"primary.dark"
-             }}]}
-            onClick={()=>{
-            setMenu('Service')
-            DrawerClose()
-         
-         }}>
-            <ListItemIcon>
-            <MiscellaneousServicesIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Services" />
+}}>
+  <ListItemIcon>
+    <InfoIcon sx={[selectedMenu!='About' && {color:'primary.dark'},selectedMenu==='About'&& {color:'white'}]}/>
+  </ListItemIcon>
+  <ListItemText primary="About" sx={[selectedMenu!='About' && {color:'primary.dark'}]}/>
 
-          </ListItemButton>
-      </Link>
-      <Link to={'about'} style={{textDecoration:"none"}}>
-          <ListItemButton  sx={[selectedMenu ==='About' && {bgcolor:"primary.main",color:"white",":hover":{
-            bgcolor:"primary.dark"
-             }}]}
-            onClick={()=>{
-            setMenu('About')
-            DrawerClose()
-         
-         }}>
-            <ListItemIcon>
-              <InfoIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="About" />
+</ListItemButton>
+</Link>
 
-          </ListItemButton>
-          </Link>
 
-          <ListItemButton >
-            <ListItemIcon>
-              <ContactsIcon sx={{ color: "primary.dark"}} />
-            </ListItemIcon>
-            <ListItemText primary="Contacts" />
+<ListItemButton >
+  <ListItemIcon>
+    <ContactsIcon sx={{ color: "primary.dark"}}/>
+  </ListItemIcon>
+  <ListItemText primary="Contacts" sx={{ color: "primary.dark"}}/>
 
-          </ListItemButton>
-          <ListItemButton >
-            <ListItemIcon>
-              <AccountCircleIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Users" />
+</ListItemButton>
 
-          </ListItemButton>
+
+
+<ListItemButton >
+  <ListItemIcon>
+    <AccountCircleIcon sx={{ color: "primary.dark"}}/>
+  </ListItemIcon>
+  <ListItemText primary="Users" sx={{ color: "primary.dark"}} />
+
+</ListItemButton>
 
         </List>
       </Box>
@@ -246,7 +211,7 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
             </ListItemIcon >
             <ListItemText primary="Dashboard" />
           </ListItemButton>
-          <Link to={'home'} style={{textDecoration:"none"}}>
+   <Link to={'home'} style={{textDecoration:"none"}}>
 
 <ListItemButton
       sx={[selectedMenu ==='Home' && {bgcolor:"primary.dark",color:"white",":hover":{
@@ -257,9 +222,9 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
         console.log('Home clicked')
       }}>
   <ListItemIcon sx={{ color: "primary.dark"}}>
-    <AssignmentIcon sx={[selectedMenu==='Home' && {color:"white"}]}/>
+    <AssignmentIcon sx={[selectedMenu!='Home' && {color:'primary.dark'},selectedMenu==='Home'&& {color:'white'}]}/>
   </ListItemIcon>
-  <ListItemText primary="Home"/>
+  <ListItemText primary="Home"sx={[selectedMenu!='Home' && {color:'primary.dark'}]}/>
 </ListItemButton>
 </Link>
 
@@ -275,9 +240,9 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
                   console.log('Client clicked')
                 }}>
             <ListItemIcon sx={{ color: "primary.dark"}}>
-              <AssignmentIcon sx={[selectedMenu==='Client' && {color:"white"}]}/>
+              <AssignmentIcon sx={[selectedMenu!='Client' && {color:'primary.dark'},selectedMenu==='Client'&& {color:'white'}]}/>
             </ListItemIcon >
-            <ListItemText primary="Client" />
+            <ListItemText primary="Client" sx={[selectedMenu!='Client' && {color:'primary.dark'}]}/>
           </ListItemButton>
           </Link>
           
@@ -292,59 +257,24 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
                   console.log('Houses clicked')
                 }}>
             <ListItemIcon >
-              <InboxIcon sx={{ color: "primary.dark"}}/>
+              <InboxIcon sx={[selectedMenu!='Houses' && {color:'primary.dark'},selectedMenu==='Houses'&& {color:'white'}]}/>
             </ListItemIcon>
-            <ListItemText primary="Houses" />
+            <ListItemText primary="Houses" sx={[selectedMenu!='Houses' && {color:'primary.dark'}]}/>
 
           </ListItemButton>
-          </Link>
-
-          <Link to={'images'} style={{textDecoration:"none"}}>
-          <ListItemButton 
-          sx={[selectedMenu ==='Images' && {bgcolor:"primary.main",color:"white",":hover":{
-            bgcolor:"primary.dark"
-          }}]}
-          onClick={()=>{
-            setMenu('Images')
-            console.log('Images clicked')
-          }}>
-            <ListItemIcon>
-              <InboxIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Images" />
-
-          </ListItemButton>
-
-          </Link>
-          <Link to={'gallery'} style={{textDecoration:"none"}}>
-          <ListItemButton 
-                    sx={[selectedMenu ==='Gallery' && {bgcolor:"primary.main",color:"white",":hover":{
-                      bgcolor:"primary.dark"
-                    }}]}
-                    onClick={()=>{
-                      setMenu('Gallery')
-                      console.log('Gallery clicked')
-                    }}>
-            <ListItemIcon>
-              <InboxIcon sx={{ color: "primary.dark"}}/>
-            </ListItemIcon>
-            <ListItemText primary="Gallery" />
-
-          </ListItemButton>
-
           </Link>
           <Link to={'services'} style={{textDecoration:"none"}}>
             <ListItemButton 
-           sx={[selectedMenu ==='Service' && {bgcolor:"primary.main",color:"white",":hover":{
+           sx={[selectedMenu ==='Services' && {bgcolor:"primary.main",color:"white",":hover":{
             bgcolor:"primary.dark"
              }}]}
             onClick={()=>{
-            setMenu('Service')
+            setMenu('Services')
       
          
          }}>
             <ListItemIcon>
-            <MiscellaneousServicesIcon sx={{ color: "primary.dark"}}/>
+            <MiscellaneousServicesIcon sx={[selectedMenu!='Services' && {color:'primary.dark'},selectedMenu==='Services'&& {color:'white'}]}/>
             </ListItemIcon>
             <ListItemText primary="Services"sx={[selectedMenu!='Services' && {color:'primary.dark'}]}/>
 
@@ -361,7 +291,7 @@ export default function Sidebar({ DrawerOpen, DrawerClose }) {
          
          }}>
             <ListItemIcon>
-              <InfoIcon sx={{ color: "primary.dark"}}/>
+              <InfoIcon sx={[selectedMenu!='About' && {color:'primary.dark'},selectedMenu==='About'&& {color:'white'}]}/>
             </ListItemIcon>
             <ListItemText primary="About" sx={[selectedMenu!='About' && {color:'primary.dark'}]}/>
 
