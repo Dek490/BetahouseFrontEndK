@@ -20,10 +20,10 @@ export const AddData =(edpoint,querykey)=>{
         mutationFn: async (data) => await PostNew(edpoint,data),
         onSuccess: async ()=>{
           queryclient.invalidateQueries({queryKey:[querykey]})
-          toast.success("client added successfully")
+          toast.success("Data added successfully")
       },
       onError: async ()=>{
-          toast.error("Adding New Client Failed")
+          toast.error("Adding New Data Failed")
       },
     })
     

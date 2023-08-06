@@ -13,6 +13,9 @@ import {getAll,PostNew} from  '../Shared/ApiCrud'
 // import { getAll,AddData  } from '../../../Shared/apiCRUD';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
 
 const Home = () => {
     const [Datada, setdata]=useState()
@@ -20,13 +23,29 @@ const Home = () => {
     const ToggleDailog = ()=>{
         setDailog(!dailogOpen)
     }
+
+    const HomeValidating = yup.object({
+
+    
+
+        email: yup.string().email().required("Please Enter Email"),
+        logo: yup.string().required("Please Enter Logo"),
+        location: yup.string().required("Please Enter location"),
+        complain_email: yup.string().email().required("Please Enter Complain email"),
+        complain_phone: yup.string().required("Please Enter complain phone"),
+        facebook: yup.string().required("Please Enter Facebooke Account"),
+        tiktok: yup.string().required("Please Enter Tiktok Account"),
+    
+    });
   const {
     register,
     handleSubmit,
     reset,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(HomeValidating),
+});
   // get data
   useEffect(() => {
     const HomeSetting = async () => {
@@ -169,24 +188,73 @@ console.log(data)
               
               <Grid xs={12} md={4} m={2}>
                 <TextField label='Email' id='email' name='email' {...register('email')} variant='standard' size='small' fullWidth/>
+                <p>
+             {errors.email && (
+               <span style={{color:"#FA3F08"}}>{errors.email.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField  label='Logo'  id='logo' {...register('logo')} variant='standard' size='small' fullWidth  />
+                <p>
+             {errors.logo && (
+               <span style={{color:"#FA3F08"}}>{errors.logo.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField label='location' {...register('location')} variant='standard' size='small' fullWidth/>
+                <p>
+             {errors.location && (
+               <span style={{color:"#FA3F08"}}>{errors.location.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField label='complain_email' {...register('complain_email')} variant='standard' size='small' fullWidth />
+                <p>
+             {errors.complain_email && (
+               <span style={{color:"#FA3F08"}}>{errors.complain_email.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField label='complain_phone' {...register('complain_phone')} variant='standard' size='small' fullWidth/>
+                <p>
+             {errors.complain_phone && (
+               <span style={{color:"#FA3F08"}}>{errors.complain_phone.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField label='facebook' {...register('facebook')} variant='standard' size='small' fullWidth />
+                <p>
+             {errors.facebook && (
+               <span style={{color:"#FA3F08"}}>{errors.facebook.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField label='tiktok' {...register('tiktok')}  variant='standard'  size='small' fullWidth />
+                <p>
+             {errors.tiktok && (
+               <span style={{color:"#FA3F08"}}>{errors.tiktok.message}</span>
+
+               )}
+
+            </p>
               </Grid>
               <Grid xs={12} md={4} m={2}>
                 <TextField label='instagram' {...register('instagram')} variant='standard' size='small' fullWidth />

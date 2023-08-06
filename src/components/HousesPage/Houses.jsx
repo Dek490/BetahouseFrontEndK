@@ -138,8 +138,6 @@ const DeleteHouseInfo= async(data)=>{
     setHouseDelId(data._id)
 
 }
-
-
     return <>
    <Box p={4}>
 
@@ -159,11 +157,7 @@ const DeleteHouseInfo= async(data)=>{
         <DialogContent>
         <Box sx={{width:"400px"}} mt={2}>
 
-
-
 <Stack  spacing={2} direction={'column'}>
-
-
 
 <TextField label="House Type" {...register("type")} variant="outlined" size="small" fullWidth/>
 {/* <FormControl fullWidth {...register("type")}>
@@ -191,11 +185,7 @@ const DeleteHouseInfo= async(data)=>{
 <TextField label="Rooms" variant="outlined" {...register("Rooms")} size="small" fullWidth/>
 <TextField label="Pathrooms" variant="outlined" {...register("Pathrooms")} size="small" fullWidth/>
 <TextField label="Owner" variant="outlined" {...register("Owner")} size="small" fullWidth/>
-    
-    
-    
-    
-    
+
     </Stack>
 
     </Box>

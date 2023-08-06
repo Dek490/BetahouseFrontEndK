@@ -21,16 +21,39 @@ import CircularProgress from "@mui/material/CircularProgress";
 import ConfirmDelete from '../Delete/ConfirmDelete'
 import {useDeleteHook} from '../Delete/DeleteHooks'
 import {GetData,AddData,UpdateData,DeleteData} from '../Shared/ReacQuery'
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
 export const Clients = () => {
   const [CliDelId,setCliDelId]=useState("")
+
+  // const isNotEmoji = (message = 'Emojis are not allowed.') => {
+  //   return yup.string().test('is-not-emoji', message, (value) => {
+  //     const emojiRegex = /(?:[\u2700-\u27BF]|(?:\uD83C[\uDF00-\uDFFF])|(?:\uD83D[\uDC00-\uDE4F])|[\uD800-\uDBFF]|[\uDC00-\uDFFF])/g;
+  //     return !emojiRegex.test(value);
+  //   });
+  // };
+  const ClientValidating = yup.object({
+
+    
+
+    ClientName: yup.string().required("Please Enter Client Name"),
+    Logo: yup.string().required("Please Enter Client Logo"),
+
+});
+
   const {
     register,
     handleSubmit,
     setValue,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(ClientValidating),
+});
   //Dailog 
+
+
 
   
   const [dailogOpen, setDailog] = useState(false);
@@ -133,6 +156,13 @@ const DeleteClientInfo= async(data)=>{
                     size="small"
                     fullWidth
                   />
+          <p>
+             {errors.ClientName && (
+               <span style={{color:"#FA3F08"}}>{errors.ClientName.message}</span>
+
+               )}
+
+            </p>
 
                   <TextField
                     label="Client logo"
@@ -141,6 +171,13 @@ const DeleteClientInfo= async(data)=>{
                     size="small"
                     fullWidth
                   />
+              <p>
+             {errors.Logo && (
+               <span style={{color:"#FA3F08"}}>{errors.Logo.message}</span>
+
+               )}
+
+            </p>
                 </Stack>
               </Box>
             </DialogContent>
