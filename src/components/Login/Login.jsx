@@ -71,7 +71,7 @@ export default function Login() {
             </p>
                 <Stack direction={'row'}>
                 <LockOpenIcon sx={{fontSize:40}}/>
-                <TextField {...register('password')} size='small' label='Password' variant='outlined'></TextField>
+                <TextField type='password' {...register('password')} size='small' label='Password' variant='outlined'></TextField>
 
                 </Stack>
                 <p>
