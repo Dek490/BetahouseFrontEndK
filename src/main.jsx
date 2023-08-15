@@ -6,6 +6,7 @@ import App from './App.jsx'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserContextProvider } from './components/ContextApi/userContext.jsx';
 import {
   QueryClient,
   QueryClientProvider,
@@ -31,7 +32,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 <QueryClientProvider client={queryClient} >
     <ThemeProvider theme={theme}>
     <BrowserRouter>
+    <UserContextProvider>
     <App />
+    </UserContextProvider>
     <ToastContainer/>
     </BrowserRouter>
     </ThemeProvider>

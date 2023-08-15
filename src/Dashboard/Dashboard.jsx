@@ -4,8 +4,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useUserContext } from "../components/ContextApi/userContext";
 export default function Dashboard(){
 const [draweOpen,setDrawer]=useState(false)
+
+const {LogOut,email}=useUserContext()
 
 const ToggleDrawer = ()=>{
 setDrawer(!draweOpen)
@@ -35,7 +39,10 @@ setDrawer(!draweOpen)
     <MenuIcon sx={{color:"white"}}/>
 </IconButton>
 
-<Typography > <AccountCircleIcon sx={{marginTop:"1px",}}/> User : Eng Kaynaan</Typography>
+<Typography > <AccountCircleIcon sx={{marginTop:"1px",}}/> User : {email}</Typography>
+<IconButton sx={{p:0,marginLeft:2}} onClick={LogOut}>
+    <LogoutIcon sx={{color:"primary.dark"}}/>
+</IconButton>
 </Box >
 
 {/* top header end */}
