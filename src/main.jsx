@@ -15,8 +15,8 @@ const queryClient = new QueryClient()
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#200d3f',    
-      dark:'#e48518',
+      main: '#00ABE4',    
+      dark:'#6C164E',
       light:"#E9F7EF"
     },
 
