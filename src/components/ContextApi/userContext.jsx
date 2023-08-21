@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 const userContextApi= createContext();
 export const UserContextProvider = ({children})=>{
     const [email,setEmail]=useState('')
+    const [Roles,setRoles]=useState('')
     const [isLogin,setIsLogin]=useState(false)
     const usenavigate = useNavigate();
 
@@ -27,13 +28,15 @@ export const UserContextProvider = ({children})=>{
         {
             const jwtDecoded = jwtDecode(token)
             setEmail(jwtDecoded.email)
+            setRoles(jwtDecoded.Roles)
             setIsLogin(true)
+            console.log(Roles)
 
         }
     },[])
 
     return (
-        <userContextApi.Provider value= {{email,isLogin,LogOut,setIsLogin}}>
+        <userContextApi.Provider value= {{email,isLogin,Roles,LogOut,setIsLogin}}>
             {children}
 
         </userContextApi.Provider>

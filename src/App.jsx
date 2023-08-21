@@ -15,8 +15,9 @@ import { useUserContext } from "./components/ContextApi/userContext";
 function app() {
  
 
-  const {isLogin}=useUserContext()
+  const {isLogin,Roles}=useUserContext()
     console.log('IsLogin',isLogin)
+    console.log('Roles:',Roles)
 
 
     
@@ -24,7 +25,6 @@ function app() {
     <>
 
 <Routes>
-
 <Route path='/' element={<Login/>}/>
 {isLogin &&
 <Route path='/Dashboard' element={<Dashboard/>}>

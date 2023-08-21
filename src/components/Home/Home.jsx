@@ -106,19 +106,19 @@ console.log(data)
         <Typography sx={{ fontSize: 14,color:'white' }} color="text.secondary" gutterBottom>
           <p style={{textAlign:"center",fontSize:20}}>Contacts</p>
         </Typography>
-        <Typography sx={{color:'primary.main'}} variant="h6" component="div">
+        <Typography sx={{color:'primary.white'}} variant="h6" component="div">
          <span><b>Email:</b></span> {Datada?.email}
         </Typography>
-        <Typography sx={{color:'primary.main'}} >
+        <Typography sx={{color:'primary.white'}} >
         <span><b>Logo:</b></span> {Datada?.logo}
         </Typography>
-        <Typography sx={{color:'primary.main'}} >
+        <Typography sx={{color:'primary.white'}} >
         <span><b>Location:</b></span> {Datada?.location}
         </Typography>
-        <Typography sx={{color:'primary.main'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>complain_email:</b></span> {Datada?.complain_email}
         </Typography>
-        <Typography sx={{color:'primary.main'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>complain_phone:</b></span> {Datada?.complain_phone}
         </Typography>
       </CardContent>
@@ -128,16 +128,16 @@ console.log(data)
         <Typography sx={{ fontSize: 14,color:'white' }} color="text.secondary" gutterBottom>
           <p style={{textAlign:"center",fontSize:20}}>Our Social Media</p>
         </Typography>
-        <Typography sx={{color:'primary.dark'}} variant="h6" component="div">
+        <Typography sx={{color:'primary.white'}} variant="h6" component="div">
          <span><b>Facebook:</b></span> {Datada?.facebook}
         </Typography>
-        <Typography sx={{color:'primary.dark'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>Twitter:</b></span> {Datada?.twitter}
         </Typography>
-        <Typography sx={{color:'primary.dark'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>Tiktok:</b></span> {Datada?.tiktok}
         </Typography>
-        <Typography sx={{color:'primary.dark'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>Instagram:</b></span> {Datada?.instagram}
         </Typography>
       </CardContent>
@@ -149,16 +149,16 @@ console.log(data)
         <Typography sx={{ fontSize: 14,color:'white' }} color="text.secondary" gutterBottom>
           <p style={{textAlign:"center",fontSize:20}}>Hero Section</p>
         </Typography>
-        <Typography sx={{color:'primary.dark'}} variant="h6" component="div">
+        <Typography sx={{color:'primary.white'}} variant="h6" component="div">
          <span><b>Hero Section Title:</b></span> {Datada?.HeroSectionTitle}
         </Typography>
-        <Typography sx={{color:'primary.dark'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>Hero Section Description:</b></span> {Datada?.HeroSectionDescription}
         </Typography>
-        <Typography sx={{color:'primary.dark'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>Hero Image:</b></span> {Datada?.HeroImage}
         </Typography>
-        <Typography sx={{color:'primary.dark'}} color="text.secondary">
+        <Typography sx={{color:'primary.white'}} color="text.secondary">
         <span><b>Footer Text:</b></span> {Datada?.FooterText}
         </Typography>
       </CardContent>
