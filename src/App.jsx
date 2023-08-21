@@ -8,14 +8,25 @@ import Service from './components/Services/Service'
 import Home from './components/Home/Home'
 import About from './components/About/About'
 import ImageUpdloading from './components/HousesPage/Images'
-import { Route, Routes } from 'react-router-dom'
+import Login from './components/Login/Login'
+import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useUserContext } from "./components/ContextApi/userContext";
+
 function app() {
+ 
+
+  const {isLogin,Roles}=useUserContext()
+    console.log('IsLogin',isLogin)
+    console.log('Roles:',Roles)
+
+
+    
   return ( 
     <>
 
 <Routes>
-
-<Route path='/' element={<h1>Welcome to a login page</h1>}/>
+<Route path='/' element={<Login/>}/>
+{isLogin &&
 <Route path='/Dashboard' element={<Dashboard/>}>
 <Route path='home' element={<Home/>}/>
 <Route path='client' element={<Clients/>}/>
@@ -28,6 +39,7 @@ function app() {
 <Route path='owner' element={<h1>Owner Feels Okey</h1>}/>
 
 </Route>
+}
 </Routes>
     </>
    );

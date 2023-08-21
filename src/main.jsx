@@ -6,6 +6,7 @@ import App from './App.jsx'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserContextProvider } from './components/ContextApi/userContext.jsx';
 import {
   QueryClient,
   QueryClientProvider,
@@ -14,9 +15,9 @@ const queryClient = new QueryClient()
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#200d3f',    
-      dark:'#e48518',
-      light:"#E9F7EF"
+      main: '#00ABE4',    
+      dark:'#6C164E',
+      white:"#ffffff"
     },
 
     error:{
@@ -31,7 +32,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 <QueryClientProvider client={queryClient} >
     <ThemeProvider theme={theme}>
     <BrowserRouter>
+    <UserContextProvider>
     <App />
+    </UserContextProvider>
     <ToastContainer/>
     </BrowserRouter>
     </ThemeProvider>
